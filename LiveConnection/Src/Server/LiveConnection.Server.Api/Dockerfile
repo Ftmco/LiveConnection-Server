@@ -7,10 +7,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["LiveConnection.Server.Api/LiveConnection.Server.Api.csproj", "LiveConnection.Server.Api/"]
-RUN dotnet restore "LiveConnection.Server.Api/LiveConnection.Server.Api.csproj"
+COPY ["Src/Server/LiveConnection.Server.Api/LiveConnection.Server.Api.csproj", "Src/Server/LiveConnection.Server.Api/"]
+RUN dotnet restore "Src/Server/LiveConnection.Server.Api/LiveConnection.Server.Api.csproj"
 COPY . .
-WORKDIR "/src/LiveConnection.Server.Api"
+WORKDIR "/src/Src/Server/LiveConnection.Server.Api"
 RUN dotnet build "LiveConnection.Server.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
